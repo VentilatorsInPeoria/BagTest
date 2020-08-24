@@ -34,7 +34,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@master
 
     # We use the `arduino/setup-arduino-cli` action to install and
     # configure the Arduino CLI on the system.
@@ -46,6 +46,12 @@ jobs:
       run: |
         arduino-cli core update-index
         arduino-cli core install ${{ matrix.arduino-platform }}
+    
+    # Install dependencies
+    - name: Install dependencies
+      run: |
+        arduino-cli install "LiquidCrystal I2C"
+    
     # Finally, we compile the sketch, using the FQBN that was set
     # in the build matrix.
     - name: Compile Sketch
