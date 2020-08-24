@@ -50,7 +50,7 @@ jobs:
     # Install dependencies
     - name: Install dependencies
       run: |
-        ./install_deps.sh
+        ./install-deps.sh
     
     # Finally, we compile the sketch, using the FQBN that was set
     # in the build matrix.
