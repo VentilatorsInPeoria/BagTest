@@ -10,8 +10,8 @@
 #include <Adafruit_Sensor.h>  // Adafruit_Unified_Sensor
 #include <Streaming.h>        // cout <iostream> functionality using Serial << endl;
 #include <avr/wdt.h>          // add the dog
-#include "fs6122.h"
-#include "wdog.h"
+#include "src/fs6122.h"
+#include "src/wdog.h"
 
 // defines
 
