@@ -1,33 +1,36 @@
 # BagTest
 
-Ventilators In Peoria (VIP)
+Arduino Mega 2560 code to control the Ventilators in Peoria (VIP) system
 
-Test the VIP fixture
+To setup the Arduino Mega 2560 environment on your system:
 
-This is written and tested on the Arduino Mega 2560
+```bash
+git clone https://github.com/arduino/arduino-cli.git
+cd arduino-cli/
+./install.sh
+export PATH="$(readlink -f ./bin/):${PATH}"
+arduino-cli core update-index
+arduino-cli core install 'arduino:avr'
+```
 
-Serial Port Info:
+ To install this setup the package's dependencies and build (using same $PATH variable as previous commands):
 
-stty -F /dev/ttyACM0 115200
-cu -l /dev/ttyACM0 -s 115200
+```bash
+git clone https://github.com/VentilatorsInPeoria/BagTest.git
+cd BagTest/
+./install-deps.sh
+arduino-cli compile --fqbn 'arduino:avr:mega'
+```
 
- ~/arduino-1.8.12/arduino --upload BagTest.ino
+To upload this package to a board (using same $PATH variable as previous commands) (replace /dev/ACM0 with the appropriate device file):
 
+```bash
+arduino-cli upload --fqbn 'arduino:avr:mega' --port '/dev/ACM0'
+```
 
-#To compile
-make verify
+To test this package (replace /dev/USB0 with the appropriate device file):
 
-#To compile and upload
-make verify
-
-#To compile and upload
-make upload
-
-#Start data collection
-make test 
-
-In another terminal 
-
-tail -f out.csv
-
-
+```bash
+stty -F '/dev/ttyUSB0' '115200'
+cat '/dev/ttyUSB0' > ./out.csv
+```
